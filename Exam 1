@@ -1,0 +1,143 @@
+Exam 1 
+
+Theory Questions
+
+1.A view is a virtual table that provides a way to present data from other tables. It shows data stored in foreign tables.
+A table is a database object that store data physically and a view does not store data 
+
+2. Pull gets and merges chnages from a remote repository while merge chnages from one local branch to the other. 
+Pull used to update local repositories whilst merge used to intergrate chnages from one branch yo another.
+
+3. ELse block gives way to execute code that should run only if exceptions were raised.
+You would use it when no exceptions are raised in the try block.
+
+4. == this is one does the type conversion or operands before comparisons whereas === operatos compares the values as wellas the data types of the operands.
+
+5. Get request = used to retrieve data from a server 
+Post request is used to send data to server to create a new resource.
+Put request is used to update an existing resource on the server 
+
+6. 1. Product Owner
+2. Scrum Master
+3. Development Team
+
+7. Primary key contraint ensures that each record in a table is unique
+Foreign key constraints ensures a column in a table correspond with another tables primary key.
+
+8. Break is used to exit a loop, it terminates the loop and transfers control to the statement.
+
+Contimue statement is used to skip majority of the code inside the current iteration of the loop and more to the next iteration.
+
+9. Var is a function scoped declared inside a function and can be redeclared.
+Const variables declared within a const are block-scoped and cannot be reassigned.
+let is block-scoped and cannot be reassigned or redeclared.
+
+Functional requirements are action oriented, measurable and specific wereas non functional requirements are quality attributes, subjective and may impose limitations on system's designs.
+
+
+
+
+Javascript
+
+Section One
+Muiltiple Choice questions
+
+1. A
+2. C
+3. A
+4. A
+5. C
+
+Section 2 Code evaluation 
+
+1.
+Corrected code 
+let length = 5; let width = 4; let area = length * width; 
+console.log("The area of the rectangle is: " + area); 
+console.log("The perimeter of the rectangle is: " + 2 * (length + width)); 
+console.log("The length of the rectangle is: " + length); 
+console.log("The width of the rectangle is: " + width); 
+console.log("The diagonal of the rectangle is: " + Math.sqrt(length ** 2 + width ** 2));
+console.log("The area of the rectangle is: " + area); 
+let perimeter = 2 * length + 2 * width; 
+console.log("The perimeter of the rectangle is: " + perimeter) 
+
+Errors
+
+1. Missing `+` operator in the first `console.log`. 
+2. `console.log` is missing a closing parenthesis and semicolon. 
+3. `lentgh` should be `length`.
+4. `width` should be declared with `let` or `const` ultimately. 
+5. let area == length * width;` should be `let area = length * width;.
+7. `with` should be `width`. 
+18. `perimter` should be `perimeter`.
+
+2. The code was missing missing closing parentesis and semicolons which are essential to run code.
+width is not declared by let or const so that should be changed.
+The spelling errors also made it hard to run the code so code should be made in correct spellings.
+
+SQL
+Section One
+Muiltiple Choice 
+
+1. C
+2. A
+3. A
+4. A
+5. C
+
+SECTION TWO
+
+Errors in the Code: 
+1. Missing 'SELECT' statement: - The 'SELECT' statement is incomplete. It should include the columns where the information is coming along with the aggregate function. 
+2. Missing 'FROM' clause: - The 'FROM' clause is missing from the query. 
+3. Incorrect Column in 'GROUP BY: - The 'GROUP BY' clause references department_name, but the 'SELECT' statement selected 'department_id', this should be the same. 
+4. Misplaced 'WHERE' clause : - The 'WHERE' clause is incorrectly positioned after the 'GROUP BY' clause.
+
+Corrected Code:
+SELECT 
+department_id, 
+COUNT(*) AS total_admissions 
+FROM admissions 
+WHERE admission_date BETWEEN 'start_date' AND 'end_date' 
+GROUP BY department_id;
+
+Ways to improve it:
+1. Indexing: Ensure that the 'admission_date' column is indexed for efficient filtering. Indexing can significantly improve query performance, especially for large datasets. 
+2. Query Optimization: Depending on the database system being used, consider reviewing the query execution plan and optimizing it further if necessary. Techniques such as query rewriting, using appropriate join types, and avoiding unnecessary sorting can help improve performance.
+3. Error Handling: Implement error handling mechanisms to handle potential errors, such as missing data or invalid date formats, gracefully. This can improve the robustness and reliability of the query. 
+
+Section three
+1. To ensure consistency with the chef names the TRIM() function can be used.
+you can clean it to look like this :
+UPDATE chefs
+SET chef_name - TRIM(chef_name);
+
+2. SELECT*
+FROM recipes
+WHERE prepartion_time = (
+  SELECT MIN(prepartion_time) FROM
+recipes
+);
+
+3. SELECT chefs.chef_id, chefs.chef_name,
+AVG(recipes.prepartion_time) AA avg_preparation_time
+FROM chefs
+JOIN recipes ON chef.chef_id = recipes.chef_id
+GROUP BY chefs.chef_id, chefs.chef_name
+ORDER BY avg_prepartion_time DESC;
+
+4. SELECT chefs.chef_id, chefs.chef_name 
+FROM chefs 
+LEFT JOIN recipes ON chefs.chef_id = recipes.chef_id AND recipes.cuisine_type = 'Italian' 
+WHERE recipes.recipe_id IS NULL;
+
+5. CREATE VIEW recipes_by_cuisine 
+AS SELECT cuisine_type, 
+COUNT(*) AS recipe_count 
+FROM recipes GROUP BY cuisine_type;
+
+
+
+
+
